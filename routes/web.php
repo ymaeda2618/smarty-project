@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// LINEの認証画面に遷移
+Route::get('auth/line', 'Auth\LineAuthController@redirectToProvider')->name('line.login');
+// 認証後にリダイレクトされるURL(コールバックURL)
+Route::get('auth/line/callback', 'Auth\LineAuthController@handleProviderCallback');
